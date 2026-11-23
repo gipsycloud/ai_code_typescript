@@ -1,14 +1,39 @@
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: digital-tools-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/digital_tools?schema=public
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npx prisma generate && npm run dev"
+    depends_on:
+      db:
+        condition: service_healthy  
   db:
     image: postgres:16
+    container_name: digital-tools-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: digital_shop
+      POSTGRES_DB: digital_tools
     ports:
-      - "5433:5432"
+      - "5434:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d digital_tools"]
+      interval: 5s
+      timeout: 5s
+      retries: 5  
 volumes:
   pgdata:

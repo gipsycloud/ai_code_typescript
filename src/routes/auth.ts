@@ -4,7 +4,7 @@ import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { signToken } from "../lib/jwt";
 import { requireAuth } from "../middleware/auth"
-import { Role } from "@prisma/client";
+import { Role } from "../generated/prisma/client";
 
 export const authRouter = Router();
 
