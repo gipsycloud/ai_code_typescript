@@ -12,4 +12,4 @@ app.get("/health", (_req, res) => res.json({ ok: true}));
 app.use("/api/products", productsRouter);
 
 const port = Number(process.env.PORT) || 3000;
-app.listen(port, () => console.log("server is running ${port}"));
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
