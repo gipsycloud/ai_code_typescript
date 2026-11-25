@@ -1,5 +1,5 @@
 {
-  "name": "digital-tools-shop",
+  "name": "@gipsycloud/digital-tools",
   "version": "1.0.0",
   "description": "Master file npm package",
   "main": "index.js",

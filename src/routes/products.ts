@@ -13,7 +13,7 @@ const createProductSchema = z.object({
   currency: z.string().length(3).default("USD"),
 });
 
-productsRouter.get("/", requireAuth, requireAdmin, async(_req, res) => {
+productsRouter.get("/", async(_req, res) => {
   const products = await prisma.product.findMany({
     where: { isActive: true},
     orderBy: { createdAt: "desc"},
