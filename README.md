@@ -4,6 +4,12 @@
 docker compose exec app npx prisma migrate dev --name init
 docker compose run --rm app npx prisma generate
 
+docker run -d \
+  --name digital-tools-app \
+  -p 3000:3000 \
+  --restart unless-stopped \
+  YOUR_DOCKERHUB_USERNAME/digital-tools-shop:latest
+
 curl -X POST http://localhost:3000/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"admin@example.com","password":"supersecret123"}'
