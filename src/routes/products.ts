@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { prisma } from "../lib/prisma";
+import prisma  from "../lib/prisma";
 import { requireAuth, requireAdmin } from "../middleware/auth";
 
 export const productsRouter = Router();
