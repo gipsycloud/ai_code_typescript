@@ -16,6 +16,8 @@ COPY . .
 RUN npx prisma generate
 
 RUN npm run build
+RUN mkdir -p dist/generated/prisma \
+    && cp -R src/generated/prisma/. dist/generated/prisma/
 
 # Copy Docker entrypoint
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
