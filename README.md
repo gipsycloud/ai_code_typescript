@@ -4,6 +4,10 @@
 docker compose exec app npx prisma migrate dev --name init
 docker compose run --rm app npx prisma generate
 
+docker compose up -d --build
+# or
+docker build -t myapp:1.0 . && docker run -d -p 3000:3000 myapp:1.0
+
 docker run -d \
   --name digital-tools-app \
   -p 3000:3000 \
