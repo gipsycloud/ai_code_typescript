@@ -10,3 +10,4 @@ docker-compose*
 README.md
 coverage
 dist
+npm-debug.log
