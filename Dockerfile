@@ -15,6 +15,8 @@ COPY . .
 # Generate Prisma Client
 RUN npx prisma generate
 
+RUN npm run build
+
 # Copy Docker entrypoint
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
