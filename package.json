@@ -1,6 +1,6 @@
 {
   "name": "@gipsycloud/digital-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Master file npm package",
   "main": "index.js",
   "scripts": {
